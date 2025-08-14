@@ -8,19 +8,10 @@ import {
   createRouter,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import FormSimpleDemo from './routes/demo.form.simple.tsx';
-import FormAddressDemo from './routes/demo.form.address.tsx';
-
-import Header from './components/Header';
-
-import './styles.css';
-
-import App from './App.tsx';
 
 const rootRoute = createRootRoute({
   component: () => (
     <>
-      <Header />
       <Outlet />
       <TanStackRouterDevtools />
     </>
@@ -30,13 +21,11 @@ const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: App,
 });
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
-  FormSimpleDemo(rootRoute),
-  FormAddressDemo(rootRoute),
+  // TODO: 자식 경로 여기에 추가
 ]);
 
 const router = createRouter({
